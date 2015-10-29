@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Demo: ScrollMagic Tutorial - Simple scrolling website</title>
+    <meta name="description" content="Learn how to create a simple scrolling website using ScrollMagic.">
+    <link rel="author" href="https://plus.google.com/u/0/109859280204979591787/about" />
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+        * This demo was prepared for you by Petr Tichy - Ihatetomatoes.net
+        * Want to see more similar demos and tutorials?
+        * Help by spreading the word about Ihatetomatoes blog.
+        * Facebook - https://www.facebook.com/ihatetomatoesblog
+        * Twitter - https://twitter.com/ihatetomatoes
+        * Google+ - https://plus.google.com/u/0/109859280204979591787/about
+    -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://ihatetomatoes.net/demos/simple-scrollmagic-tutorial/css/main.min.css">
+    <script src="https://ihatetomatoes.net/demos/simple-scrollmagic-tutorial/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <style type="text/css">
+    .back-link {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 9999;
+    }
+    
+    .back-link a {
+        color: #222222;
+        padding: 8px 10px;
+        background-color: rgba(0, 0, 0, 0.4);
+        text-decoration: none;
+        border-bottom: 1px #fff8de solid;
+        opacity: 0.4;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+    }
+    
+    .back-link a:hover,
+    .back-link a:focus {
+        text-decoration: none;
+        border-bottom: 1px #ffffff solid;
+        background-color: rgba(255, 255, 255, 1);
+        opacity: 1;
+    }
+    
+    .socialLinks {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000000;
+    }
+    
+    .fb-like {
+        top: -10px;
+    }
+    
+    .fb-like,
+    .twitter-follow-button,
+    .twitter-share-button {
+        margin-right: 10px;
+    }
+    
+    #carbonads-container {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000000;
+        display: none;
+    }
+    
+    .smallNotice {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 8px 10px;
+        background-color: #fcf8e3;
+        color: #8a6d3b;
+        border: 1px #e7d0a8 solid;
+    }
+    
+    @media only screen and (min-width: 768px) {
+        #carbonads-container {
+            display: block;
+        }
+        .smallNotice {
+            display: none;
+        }
+    }
+    </style>
+</head>
+
+<body class="iphone-in">
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=580445718641008";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="socialLinks">
+        <div class="fb-like" data-href="https://ihatetomatoes.net/simple-scrollmagic-tutorial/" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://ihatetomatoes.net/simple-scrollmagic-tutorial/" data-via="ihatetomatoes" data-size="large" data-count="none">Tweet</a>
+        <script>
+        ! function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, 'script', 'twitter-wjs');
+        </script>
+    </div>
+    <nav class="back-link">
+        <span class="nav-previous"><a href="https://ihatetomatoes.net/simple-scrollmagic-tutorial/" rel="prev"><span class="meta-nav">&larr;</span> Back to article</a>
+        </span>
+    </nav>
+    <!-- .nav-single -->
+ 
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Demo content -->
+    <section id="one">
+        <div class="inner innerS1">
+            <h1>Simple ScrollMagic Tutorial</h1>
+            <p>Learn how to create a <strong>simple scrolling website</strong> using ScrollMagic</p>
+        </div>
+    </section>
+    <section id="two">
+        <div class="innerText innerS2">
+            <h2>Why to learn ScrollMagic?</h2>
+            <ul class="features">
+                <li>It's great for <strong>story telling websites</strong></li>
+                <li>It gives you <strong>endless creative power</strong></li>
+                <li>It's <strong>easy to use</strong> once you get it</li>
+            </ul>
+        </div>
+    </section>
+    <section id="three">
+        <div class="innerText innerS3">
+            <h2>When to use ScrollMagic?</h2>
+            <ul class="features">
+                <li>When building <strong>interactive infographics</strong></li>
+                <li>When introducing your <strong>product or service</strong></li>
+                <li>When sharing your <strong>unique story or timeline</strong></li>
+            </ul>
+        </div>
+    </section>
+    <section id="four">
+        <div class="innerText innerS4">
+            <h2>Want to learn more?</h2>
+            <div id="signup" class="card">
+                <h2>Sign Up</h2>
+                <div class="cContent">
+                    <p>Don't miss out on more free ScrollMagic demos and tutorials from the guy who hates tomatoes.</p>
+                    <form action="https://www.aweber.com/scripts/addlead.pl" method="post">
+                        <div style="display: none; text-align: center;">
+                            <input type="hidden" name="listname" value="ihtnet" />
+                            <br />
+                            <input type="hidden" name="redirect" value="http://www.aweber.com/thankyou-coi.htm?m=text" id="redirect_971649a7faec1e311367e2223e4e3bcd" />
+                            <input type="hidden" name="meta_redirect_onlist" value="https://ihatetomatoes.net/sign-up-confirmation/" />
+                            <input type="hidden" name="meta_adtracking" value="ScrollMagic_Demos" />
+                            <br />
+                            <input type="hidden" name="meta_message" value="1" />
+                            <br />
+                        </div>
+                        <div class="af-standards clearfix">
+                            <div class="af-element af-element-name">
+                                <input id="awf_field-69717882" type="text" name="name" class="text" value="" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " tabindex="40" placeholder="Name" />
+                            </div>
+                            <div class="af-element af-element-email">
+                                <input class="email" tabindex="41" type="text" name="email" placeholder="Email" />
+                            </div>
+                            <div class="af-element buttonContainer">
+                                <input class="button orange" tabindex="42" type="submit" name="submit" value="Yes, Sign Me Up!" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="iphone">
+            <p class="screen screenHat"><img src="img/img_scrollMagic.png" /></p>
+            <p class="screen screenA">A</p>
+            <p class="screen screenB">B</p>
+            <p class="screen screenC">C</p>
+        </div>
+    </section>
+    <!-- /Demo content -->
+    <p class="smallNotice">This demo is not optimised for mobile. More on that next time.</p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')
+    </script>
+    <!-- Include ScrollMagic and GSAP plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.0/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/ScrollMagic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/plugins/debug.addIndicators.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Google Analytics: change UA-XXXXXX-X to be your site's ID. -->
+    <script>
+    var _gaq = [
+        ['_setAccount', 'UA-839919-3'],
+        ['_trackPageview']
+    ];
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.src = '//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s)
+    }(document, 'script'));
+    </script>
+</body>
+
+</html>
